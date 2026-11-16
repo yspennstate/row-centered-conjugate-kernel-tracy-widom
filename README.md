@@ -16,11 +16,10 @@ bound of order N^(-1) on the resulting displacement of the right edge.
 
 - `paper/main.tex`, `paper/main.pdf`: the paper.
 - `code/check_quadratic_forms.py`: exact rational-arithmetic checks of the Gaussian polynomial identities behind the
-  quadratic form bound (Proposition 4.1) in dimension at most four and degree at most five.
+  quadratic form bound (Proposition 3.1) in dimension at most four and degree at most five.
 - `code/check_constants.py`: exact checks of the spherical moments, the closed form and bound for μ₄, the
-  Marchenko–Pastur edge constants and the change of normalization in Theorem 2.1.
-
-- `code/edge_weight_side.py`: the weight-side edge E_W of Remark 7.1 for σ = h₂, in Tracy–Widom units, at the sizes
+  Marchenko–Pastur edge constants and the change of normalization in Theorem 1.1.
+- `code/edge_weight_side.py`: the weight-side edge E_W of Remark 6.1 for σ = h₂, in Tracy–Widom units, at the sizes
   quoted there (`python3 code/edge_weight_side.py 6`; needs NumPy).
 
 The first two scripts use the Python standard library only; run them with `python3 code/<script>.py`. The proofs do

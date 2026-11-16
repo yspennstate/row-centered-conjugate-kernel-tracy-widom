@@ -1,5 +1,5 @@
 \section{Notation}\label{app:notation}
-Symbols are listed by the section in which they first appear. Standard symbols ($\RR$, $\EE$, $\PP$, $\Tr$, $\Var$) and generic constants $C$, $c$ are omitted.
+Each symbol is listed with the section in which it first appears. Standard symbols ($\RR$, $\EE$, $\PP$, $\Tr$, $\Var$) and generic constants $C$, $c$ are omitted.
 
 {\small
 \begin{longtable}{@{}p{0.17\textwidth}p{0.55\textwidth}l@{}}\toprule
@@ -27,38 +27,36 @@ $q$ & $a_2^2$ & Section~\ref{sec:intro} \\
 $g$ & standard Gaussian vector in $\RR^d$ & Section~\ref{sec:intro} \\
 $U$, $u_j$ & the matrix with unit columns $u_j=x_j/\sqrt d$ & Section~\ref{sec:intro} \\
 $z_i$, $\xi_i$ & sample vectors of a sample covariance matrix, and $T^{-1/2}z_i$ & Section~\ref{sec:intro} \\
-$M$ & dimension of the sample vectors; $M=N-1$ in the proof of Theorem~\ref{thm:main} and $M=N$ in that of Corollary~\ref{cor:K} & Section~\ref{sec:intro} \\
+$M$ & dimension of the sample vectors; $M=N-1$ for $K_P$ and $M=N$ for $K$ & Section~\ref{sec:intro} \\
 $T$ & covariance of the sample vectors & Section~\ref{sec:intro} \\
 $E_T$, $\gamma_T$ & right edge determined by $T$ and $M/m$, and its scaling parameter & Section~\ref{sec:intro} \\
-$t_{\max}$ & largest eigenvalue of $T$ & Section~\ref{sec:intro} \\
-$u_+$ & the zero of $f'$ defining $E_T$ & Section~\ref{sec:intro} \\
-$\tau$ & constant in the regularity condition of the right edge & Section~\ref{sec:intro} \\
-$\Theta$, $w$ & deterministic matrix and weight vector of the random features model $\sigma(\Theta w)$ of Fan, Ma, Paquette and Wang & Section~\ref{sec:intro} \\
 $\|\cdot\|_p$ & norm of $L^p$, $(\EE|V|^p)^{1/p}$ & Section~\ref{sec:intro} \\
 $\|\cdot\|_F$, $\|\cdot\|_{\rm op}$ & Hilbert--Schmidt norm and operator norm & Section~\ref{sec:intro} \\
 $\Sigma$ & covariance of a row of $Y$ given the data & Section~\ref{sec:intro} \\
-$B$, $R$ & zero-diagonal matrices with $B_{jl}=\rho_{jl}^2-1/d$ and $R_{jl}$ the terms of $\Sigma_{jl}$ of degree at least three in $\rho_{jl}$ & Section~\ref{sec:intro} \\
 $Q$ & $N\times M$ matrix with orthonormal columns and $QQ^{T}=P$ & Section~\ref{sec:intro} \\
 $A_0$ & $T-vI_M$ & Section~\ref{sec:intro} \\
 $O_P$, $o_P$ & bounded in probability, and tending to zero in probability & Section~\ref{sec:intro} \\
 $\bar y$ & vector of row means $Y\mathbf 1/N$ & Remark~\ref{rem:scope} \\
 $\phi$ & $\sigma(U^{T}g)$, a row of $Y$ given the data & Section~\ref{sec:intro} \\
+$S_t$, $\nu$ & the Ornstein--Uhlenbeck semigroup, and a multi-index of the product Hermite basis, in the proofs of Section~\ref{sec:gauss} & Section~\ref{sec:gauss} \\
 $C_U$, $C_T$ & bounds on $\|U\|_{\rm op}$ and $\|T\|_{\rm op}$ & Section~\ref{sec:qf} \\
 $\kappa_4$ & $(\EE|\sigma'(Z)|^4)^{1/4}$ & Section~\ref{sec:qf} \\
 $\rho_{jl}$ & $u_j^{T}u_l$ & Section~\ref{sec:cov} \\
 $D$ & $\Sigma-vI_N$ & Section~\ref{sec:cov} \\
-$t_1\ge\dots\ge t_M$ & the eigenvalues of $T$ & Section~\ref{sec:edge} \\
-$f$ & edge function of Silverstein and Choi & Section~\ref{sec:edge} \\
+$B$, $R$ & zero-diagonal matrices with $B_{jl}=\rho_{jl}^2-1/d$ and $R_{jl}$ the terms of $\Sigma_{jl}$ of degree at least three in $\rho_{jl}$ & Section~\ref{sec:cov} \\
+$\mathcal S$, $\zeta$, $\theta$ & local to the proof of Lemma~\ref{lem:cov} & Section~\ref{sec:cov} \\
+$t_1\ge\dots\ge t_M$ & the eigenvalues of $T$ & Section~\ref{sec:intro} \\
+$u_+$ & the zero of $f'$ defining $E_T$ & Section~\ref{sec:intro} \\
+$\tau$ & constant in the regularity condition of the right edge & Section~\ref{sec:intro} \\
+$f$ & edge function of Silverstein and Choi & Section~\ref{sec:intro} \\
 $f_0$ & $f$ for $T=vI_M$ & Section~\ref{sec:edge} \\
 $\eta$ & margin of the largest eigenvalue below the threshold in Lemma~\ref{lem:edge}(ii) & Section~\ref{sec:edge} \\
 $r$ & $M/m$ & Section~\ref{sec:edge} \\
 $u_0$, $E_0$, $\gamma_0$ & $u_+$, $E_T$, $\gamma_T$ for $T=vI_M$ & Section~\ref{sec:edge} \\
 $\mu$, $s_2$ & mean and mean square of $t_j-v$ & Section~\ref{sec:edge} \\
-$\mathcal G_N$ & the event defined in Section~\ref{sec:proof} & Section~\ref{sec:proof} \\
-$S_t$, $\nu$ & the Ornstein--Uhlenbeck semigroup, and a multi-index of the product Hermite basis, in the proofs of Section~\ref{sec:gauss} & Section~\ref{sec:gauss} \\
-$\mathcal S$, $\zeta$ & local to the proof of Lemma~\ref{lem:cov} & Section~\ref{sec:cov} \\
 $J$ & local to the proof of Lemma~\ref{lem:edge} & Section~\ref{sec:edge} \\
-$H_P$ & $m^{-1}\sum_iz_iz_i^{T}$ for $z_i=Q^{T}\phi_i$ & Section~\ref{sec:proof} \\
+$\mathcal G_N$ & the event defined in Section~\ref{sec:proof} & Section~\ref{sec:proof} \\
+$H_P$ & $m^{-1}\sum_iz_iz_i^{T}$ for $z_i=Q^{T}\sigma(U^{T}w_i)$ & Section~\ref{sec:proof} \\
 $c_N$ & the ratio $M/N$ & Section~\ref{sec:proof} \\
 $\Sigma_W$ & covariance of a column of $Y$ given $W$ & Remark~\ref{rem:finite} \\
 $G_W$, $s_W$ & the matrix $WW^{T}/d$ and its diagonal & Remark~\ref{rem:finite} \\

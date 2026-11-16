@@ -33,12 +33,12 @@
 
 \begin{document}
 \begin{abstract}
-Let $Y=\sigma(WX/\sqrt d)$, where $W$ is an $m\times d$ matrix with independent standard Gaussian entries, the $N$ columns of $X$ are independent and uniform on the sphere of radius $\sqrt d$, and $\sigma$ is a fixed polynomial with $\EE\sigma(Z)=\EE[Z\sigma(Z)]=0$ for a standard Gaussian $Z$. Let $m,d,N\to\infty$ proportionally with $m/N\to b\ne1$, and let $K_P=YPY^{T}/N$, where $P$ removes the mean of each row of $Y$ over the data points. We prove that the largest eigenvalue of $K_P$ has Tracy--Widom fluctuations of order $N^{-2/3}$ around $v(1+\sqrt{m/N})^2$, where $v=\EE\sigma(Z)^2$, and that the same holds for $YY^{T}/N$ when $N/d$ times the squared coefficient of $\sigma$ on the second Hermite polynomial stays below $v\sqrt{N/m}$ in the limit. The proof applies, given the data, the edge universality theorem of Chen and Lyu with the quadratic form bound of Fan, Ma, Paquette and Wang, and shows that the covariance left after the row means are removed moves the right edge by $O(N^{-1})$.
+Let $Y=\sigma(WX/\sqrt d)$, where $W$ is an $m\times d$ matrix with independent standard Gaussian entries, the $N$ columns of $X$ are independent and uniform on the sphere of radius $\sqrt d$, and $\sigma$ is a fixed polynomial with $\EE\sigma(Z)=\EE[Z\sigma(Z)]=0$ for a standard Gaussian $Z$. Let $m,d,N\to\infty$ proportionally with $m/N\to b\ne1$, and let $K_P=YPY^{T}/N$, where $P$ removes the mean of each row of $Y$ over the data points. We prove that the largest eigenvalue of $K_P$ has Tracy--Widom fluctuations of order $N^{-2/3}$ around $v(1+\sqrt{m/N})^2$, where $v=\EE\sigma(Z)^2$, and that the same holds for $YY^{T}/N$ when $N/d$ times the squared coefficient of $\sigma$ on the normalized second Hermite polynomial $(z^2-1)/\sqrt2$ stays below $v\sqrt{N/m}$ in the limit. The proof applies, given the data, the edge universality theorem of Chen and Lyu with the quadratic form bound of Fan, Ma, Paquette and Wang, and shows that the covariance left after the row means are removed moves the right edge by $O(N^{-1})$.
 \end{abstract}
 \maketitle
 
 \section{Introduction}\label{sec:intro}
-The conjugate kernel of a one-layer network with random weights is the matrix of inner products of its hidden features. With weights $W\in\RR^{m\times d}$, data $X\in\RR^{d\times N}$ and activation $\sigma$ applied entrywise, the features form the $m\times N$ matrix $Y=\sigma(WX/\sqrt d)$, and the kernel is $K=YY^{T}/N$. When $m,d,N$ grow proportionally, its empirical spectral distribution converges. Pennington and Worah~\cite{PW} identified the limit for Gaussian weights and data; Louart, Liao and Couillet~\cite{LLC} gave deterministic equivalents for the resolvent, Benigni and P\'eché~\cite{BP21} treated general entry distributions, and Fan and Wang~\cite{FW} networks of any fixed depth. Benigni and P\'eché~\cite{BP22} proved that the largest eigenvalue converges in probability, with a phase transition, and Wang, Wu and Fan~\cite{WWF} traced spiked input data to outlying eigenvalues of the kernel. The fluctuations of the largest eigenvalue at the edge have not been determined.
+The conjugate kernel of a one-layer network with random weights is the matrix of inner products of its hidden features. With weights $W\in\RR^{m\times d}$, data $X\in\RR^{d\times N}$ and activation $\sigma$ applied entrywise, the features form the $m\times N$ matrix $Y=\sigma(WX/\sqrt d)$, and the kernel is $K=YY^{T}/N$. When $m,d,N$ grow proportionally, its empirical spectral distribution converges. Pennington and Worah~\cite{PW} identified the limit for Gaussian weights and data; Louart, Liao and Couillet~\cite{LLC} gave deterministic equivalents for the resolvent, Benigni and P\'eché~\cite{BP21} treated general entry distributions, and Fan and Wang~\cite{FW} networks of any fixed depth. Benigni and P\'eché~\cite{BP22} proved, for $W$ and $X$ with independent identically distributed centered entries and an analytic activation, that the largest eigenvalue of the kernel has the same limit in probability as that of an information-plus-noise matrix; when the first Hermite coefficient of $\sigma$ vanishes the limit is explicit and has a phase transition that depends on $\sigma$ and on the kurtoses of the entries~\cite[Theorems~2.4 and~2.5]{BP22}. Wang, Wu and Fan~\cite{WWF} traced spiked input data to outlying eigenvalues of the kernel. Neither work gives the fluctuations of the largest eigenvalue. Here the data are uniform on the sphere. Theorem~\ref{thm:main} gives Tracy--Widom fluctuations for the largest eigenvalue of the row-centered kernel $K_P$ defined below, and Corollary~\ref{cor:K} gives them for $K$ when the largest eigenvalue of the covariance of a row stays below the threshold of Baik, Ben Arous and P\'ech\'e~\cite{BBP}.
 
 Let $d,N,m$ be positive integers tending to infinity with
 \begin{equation}\label{eq:ratios}
@@ -53,17 +53,17 @@ of degree $k\ge2$, with $Z$ standard Gaussian; equivalently $\EE\sigma(Z)=\EE[Z\
 K_P=\frac1N\,YPY^{T}
 \]
 be the row-centered conjugate kernel.
-$\TW$ denotes the Tracy--Widom distribution of the Gaussian orthogonal ensemble~\cite{TW}, $\lambda_{\max}$ and $\lambda_2$ the largest and second largest eigenvalues of a symmetric matrix, and $\Longrightarrow$ convergence in distribution.
+We write $\TW$ for the Tracy--Widom distribution of the Gaussian orthogonal ensemble~\cite{TW}, $\lambda_{\max}$ and $\lambda_2$ for the largest and second largest eigenvalues of a symmetric matrix, $\|A\|_{\rm op}$ for the operator norm of a matrix $A$, and $\Longrightarrow$ for convergence in distribution.
 
-Tracy--Widom fluctuations are known for sample covariance matrices whose sample vectors have dependent entries. Let $z_1,\dots,z_m\in\RR^{M}$ be independent and centered with covariance $T$, with $M/m$ tending to a limit other than one, and let $E_T$ be the right edge determined by $T$ and $M/m$ and $\gamma_T$ its scaling parameter (Section~\ref{sec:edge}). Chen and Lyu~\cite[Corollary~1.4]{CL} prove that
+Tracy--Widom fluctuations are known for sample covariance matrices whose sample vectors have dependent entries. Let $z_1,\dots,z_m\in\RR^{M}$ be independent and centered with covariance $T$, whose eigenvalues are $t_1\ge\dots\ge t_M>0$, and let $M/m$ tend to a limit other than one. The function $f(u)=-1/u+m^{-1}\sum_{j}t_j/(1+t_ju)$ on $(-1/t_1,0)$ of Silverstein and Choi~\cite{SC} has a derivative with one zero $u_+$; put $E_T=f(u_+)$, the right edge, and $\gamma_T=(2/f''(u_+))^{1/3}$ (Section~\ref{sec:edge}). Chen and Lyu~\cite[Corollary~1.4]{CL} prove that
 \[
 \gamma_Tm^{2/3}\Bigl[\lambda_{\max}\Bigl(\frac1m\sum_{i\le m}z_iz_i^{T}\Bigr)-E_T\Bigr]\Longrightarrow\TW
 \]
-when the right edge is regular in the sense of~\cite[Assumption~1.2]{CL}, recalled in Section~\ref{sec:edge}, and for every $p\ge2$ there is $C_p$ with $\|z_i^{T}Az_i-\Tr(AT)\|_p\le C_p\|A\|_F$ for every deterministic complex symmetric $A$, where $\|V\|_p=(\EE|V|^{p})^{1/p}$ and $\|A\|_F$ is the Hilbert--Schmidt norm; we call this the quadratic form bound. Given the data, the rows of $Y$ are independent copies of $\sigma(U^{T}g)$, where $U=X/\sqrt d$ has the unit columns $u_j=x_j/\sqrt d$ and $g$ is a standard Gaussian vector in $\RR^{d}$, and Fan, Ma, Paquette and Wang~\cite[Proposition~2.17]{FMPW} prove concentration of these quadratic forms for a class of vectors that contains them. For $K$ these two theorems do not give a limit theorem, for two reasons. The covariance $\Sigma$ of a row given the data is the sum of $(v-q/d)I_N$, the rank-one term $(q/d)\mathbf 1\mathbf 1^{T}$ and a matrix whose operator norm tends to zero in probability (Lemma~\ref{lem:cov}). The rank-one term has norm $qN/d\to q\alpha$, and when $q\alpha$ exceeds $v/\sqrt b$, the threshold of Baik, Ben Arous and P\'ech\'e~\cite{BBP}, the right edge is not regular. When the right edge is regular, $E_T$ still depends on the data, and a limit theorem with a deterministic centering constant requires $E_T$ up to an error $o(N^{-2/3})$. Removing the row means removes the rank-one matrix: in an orthonormal basis of the vectors orthogonal to $\mathbf 1$, the rows of $YP$ are vectors of dimension $M=N-1$ with covariance $T=vI_M+A_0$ given the data, and Lemma~\ref{lem:edge} gives constants $C$ and $\epsilon_0$ such that, when the operator norm of $A_0$ is at most $\epsilon_0$,
+when there is a fixed $\tau>0$ with $\tau\le t_M\le t_1\le\tau^{-1}$ and $1+t_1u_+\ge\tau$ (the right edge is then called regular), and when, for every $p\ge2$, there is $C_p$ with $\|z_i^{T}Az_i-\Tr(AT)\|_p\le C_p\|A\|_F$ for every deterministic complex symmetric $A$, where $\|V\|_p=(\EE|V|^{p})^{1/p}$ and $\|A\|_F$ is the Hilbert--Schmidt norm; we call this the quadratic form bound. Given the data, the rows of $Y$ are independent copies of $\sigma(U^{T}g)$, where $U=X/\sqrt d$ has the unit columns $u_j=x_j/\sqrt d$ and $g$ is a standard Gaussian vector in $\RR^{d}$; Fan, Ma, Paquette and Wang~\cite[Proposition~2.17]{FMPW} state the quadratic form bound for such vectors with high probability and a factor $N^{\epsilon}$, and their proof gives it with a constant independent of the dimension~\cite[proof of Proposition~2.17, by Lemma~5.7]{FMPW}; for Gaussian weights and polynomial $\sigma$, Proposition~\ref{prop:qf} gives a short proof with an explicit constant. Two things prevent a limit theorem for $K$. The covariance $\Sigma$ of a row given the data is $(v-q/d)I_N+(q/d)\mathbf 1\mathbf 1^{T}$ plus a matrix whose operator norm tends to zero in probability (Lemma~\ref{lem:cov}), so $\Sigma$ has an eigenvalue near $v+q\alpha$; when $q\alpha>v/\sqrt b$, the threshold of Baik, Ben Arous and P\'ech\'e~\cite{BBP}, the condition $1+t_1u_+\ge\tau$ fails. Below that threshold $E_T$ depends on the data, and a deterministic centering needs $E_T$ to within $o(N^{-2/3})$. Removing the row means removes the rank-one term: in an orthonormal basis of the vectors orthogonal to $\mathbf 1$, the rows of $YP$ have dimension $M=N-1$ and covariance $T=vI_M+A_0$ given the data, and $\|A_0\|_{\rm op}\to0$ in probability (Lemma~\ref{lem:T}). That convergence alone gives only $E_T-v(1+\sqrt{M/m})^2=o(1)$. The edge moves by an amount controlled by the trace and the Hilbert--Schmidt norm of $A_0$: for $M/m$ in a compact subset of $(0,\infty)$ there are $C,\epsilon_0>0$, depending only on $v$ and that set, such that $\|A_0\|_{\rm op}\le\epsilon_0$ implies (Lemma~\ref{lem:edge})
 \[
 \Bigl|E_T-v\bigl(1+\sqrt{M/m}\bigr)^2\Bigr|\le\frac CM\Bigl(|\Tr A_0|+\|A_0\|_F^2\Bigr).
 \]
-By Lemma~\ref{lem:T}, $\Tr A_0=-q(N-1)/d+o_P(1)$ and $\|A_0\|_F=O_P(1)$, where $o_P(1)$ tends to zero and $O_P(1)$ stays bounded in probability, so the right side is $O_P(N^{-1})$, below the order $N^{-2/3}$ of the fluctuations. That the operator norm of $A_0$ tends to zero in probability, which Lemma~\ref{lem:T} also gives, bounds the left side only by $o(1)$.
+By Lemma~\ref{lem:T}, $\Tr A_0=-q(N-1)/d+o_P(1)$ and $\|A_0\|_F=O_P(1)$, where $o_P(1)$ tends to zero and $O_P(1)$ stays bounded in probability, so the right side is $O_P(N^{-1})$, below the scale $N^{-2/3}$ of the fluctuations.
 
 \begin{theorem}\label{thm:main}
 Let the columns of $X$ be independent and uniform on the sphere of radius $\sqrt d$, let $W$ be independent of $X$ with independent standard Gaussian entries, and assume~\eqref{eq:ratios} and~\eqref{eq:sigma}. Then
@@ -76,7 +76,7 @@ In particular $\lambda_{\max}(K_P)\to v(1+\sqrt b)^2$ in probability.
 The degree and the coefficients of $\sigma$ are fixed; there is no condition on the second Hermite coefficient $a_2$. Adding a constant to $\sigma$ adds a constant matrix to $Y$, which $P$ annihilates, so Theorem~\ref{thm:main} holds without the condition $\EE\sigma(Z)=0$, with $v=\Var\sigma(Z)$; only Corollary~\ref{cor:K} uses it. The centering uses $b_N$; replacing it by $b$ requires $N^{2/3}(b_N-b)\to0$.
 
 \begin{corollary}\label{cor:K}
-Assume~\eqref{eq:ratios} and~\eqref{eq:sigma}, and in addition $q\alpha<v/\sqrt b$. Then~\eqref{eq:main} holds with $K_P$ replaced by $K$.
+Under the hypotheses of Theorem~\ref{thm:main}, assume in addition $q\alpha<v/\sqrt b$. Then~\eqref{eq:main} holds with $K_P$ replaced by $K$.
 \end{corollary}
 
 \begin{remark}\label{rem:scope}
@@ -85,23 +85,26 @@ Since $K-K_P=\bar y\bar y^{T}$ with $\bar y=Y\mathbf 1/N$ is positive semidefini
 
 Given the data, $K$ and $K_P$ have, up to the factor $m/N$, the nonzero eigenvalues of sample covariance matrices $m^{-1}\sum_{i\le m}z_iz_i^{T}$ of $m$ independent vectors. For $z_i=T^{1/2}\xi_i$ with $T$ positive definite and independent entries in $\xi_i$, the largest eigenvalue of such a matrix has Tracy--Widom fluctuations: Johnstone~\cite{Johnstone} proved this for real Gaussian $\xi_i$ and $T=I$, with the law $\TW$ of Tracy and Widom~\cite{TW}. El Karoui~\cite{ElKaroui} proved it for complex Gaussian $\xi_i$ and a large class of $T$, with the unitary law of~\cite{TW94}, and Lee and Schnelli~\cite{LS} for real $\xi_i$ and general $T$. When $T$ is the identity except for a fixed number of eigenvalues below the threshold of Baik, Ben Arous and P\'ech\'e~\cite{BBP}, Bao, Pan and Zhou~\cite[Corollary~1.7]{BPZ} obtained $\TW$ for real entries, extending the diagonal case of F\'eral and P\'ech\'e~\cite{FP}; Corollary~\ref{cor:K} is a result of this kind for sample vectors with dependent entries.
 
-The right edge is regular when, for a constant $\tau>0$ independent of $M$ and $m$, the eigenvalues of $T$ lie in $[\tau,\tau^{-1}]$ and $1+t_{\max}u_+\ge\tau$, where $t_{\max}$ is the largest eigenvalue of $T$ and $u_+$ is the point that defines $E_T$ (Section~\ref{sec:edge}); $\|A\|_{\rm op}$ denotes the operator norm. The theorem of Fan, Ma, Paquette and Wang~\cite[Proposition~2.17]{FMPW} concerns the random features model $\sigma(\Theta w)$ with a deterministic matrix $\Theta$ of bounded operator norm, in two cases: weights $w$ with independent entries and polynomial $\sigma$, and Gaussian $w$ with $\sigma$ in a class of entire functions. With $\Theta=U^{T}$ this model contains the rows of $Y$ given the data. Ma and Misiakiewicz~\cite{MM} prove the anisotropic local law under the quadratic form bound alone.
-
-Given the data, the covariance of a row is
-\[
-\Sigma=\EE\bigl[\sigma(U^{T}g)\sigma(U^{T}g)^{T}\mid U\bigr]=\Bigl(v-\frac qd\Bigr)I_N+\frac qd\,\mathbf 1\mathbf 1^{T}+qB+R,
-\]
-where $B$ and $R$ are the symmetric matrices with zero diagonal defined in Section~\ref{sec:cov}, whose operator norms tend to zero in probability (Lemma~\ref{lem:cov}). When $q>0$, $\Sigma$ has one eigenvalue near $v+q\alpha$.
-
-Let the $M=N-1$ columns of a fixed matrix $Q$ be an orthonormal basis of the vectors orthogonal to $\mathbf 1$, so that $QQ^{T}=P$, and let $T=Q^{T}\Sigma Q$ be the covariance of $z=Q^{T}\sigma(U^{T}g)$. The proof of Fan, Ma, Paquette and Wang gives, for every integer $j\ge1$ and every real symmetric $A$, $\EE\bigl(\phi^{T}A\phi-\Tr(A\Sigma)\bigr)^{2j}\le C_j\|A\|_F^{2j}$ for $\phi=\sigma(U^{T}g)$, with $C_j$ independent of the dimension~\cite[Lemma~5.7]{FMPW}. Since $z^{T}Az=\phi^{T}(QAQ^{T})\phi$, $\Tr(AT)=\Tr(QAQ^{T}\Sigma)$ and $\|QAQ^{T}\|_F=\|A\|_F$, the same bound holds for $z$; it gives the quadratic form bound for $p\le2j$, and for complex symmetric $A$ after splitting $A$ into its real and imaginary parts. Lemma~\ref{lem:edge} is built on the edge function of Silverstein and Choi~\cite{SC}; the constant $v(1+\sqrt{M/m})^2$ in its bound is the right edge of the law of Marchenko and Pastur~\cite{MP}. The same lemma, with the largest eigenvalue of the covariance treated separately, covers $K$ below the threshold. If the Hermite coefficient $a_1=\EE[Z\sigma(Z)]$ of degree one is not zero, $\Sigma$ contains in addition the matrix $a_1^2U^{T}U$, whose spectrum is not concentrated near one point, and Lemma~\ref{lem:edge} does not apply.
-
-Theorem~\ref{thm:main} uses the quadratic form bound conditionally on the data. For Gaussian weights and polynomial $\sigma$, Proposition~\ref{prop:qf} gives a direct proof with an explicit constant: for $T=\EE zz^{T}$, every real symmetric $A$ and every $p\ge2$,
+Let the $M=N-1$ columns of a fixed matrix $Q$ be an orthonormal basis of the vectors orthogonal to $\mathbf 1$, so that $QQ^{T}=P$, and let $T=Q^{T}\Sigma Q$ be the covariance of $z=Q^{T}\phi$, $\phi=\sigma(U^{T}g)$. Since $z^{T}Az=\phi^{T}(QAQ^{T})\phi$, $\Tr(AT)=\Tr(QAQ^{T}\Sigma)$ and $\|QAQ^{T}\|_F=\|A\|_F$, a quadratic form bound for $\phi$ passes to $z$, and to complex symmetric $A$ by splitting $A$ into its real and imaginary parts. For Gaussian weights and polynomial $\sigma$, Proposition~\ref{prop:qf} gives one with an explicit constant: for $T=\EE zz^{T}$, every real symmetric $A$ and every $p\ge2$,
 \[
 \bigl\|z^{T}Az-\Tr(AT)\bigr\|_p\le2\,\|U\|_{\rm op}\,\bigl(\EE|\sigma'(Z)|^4\bigr)^{1/4}\,3^{k/2}\,\|T\|_{\rm op}^{1/2}\,(p-1)^{k}\,\|A\|_F ,
 \]
-and $\|U\|_{\rm op}$ and $\|T\|_{\rm op}$ are bounded with probability tending to one. The proof bounds the variance of $z^{T}Az$ by the Gaussian Poincar\'e inequality, proved by Chernoff~\cite{Chernoff} in dimension one, and passes to the $p$-th moment by hypercontractivity of the Ornstein--Uhlenbeck semigroup, due to Nelson~\cite{Nelson} (see also Hariya~\cite{Hariya}). The hypothesis that $\sigma$ is a polynomial is used only in this proposition; Sections~\ref{sec:cov} and~\ref{sec:edge} use only the expansion of $\Sigma$ in powers of the inner products of the data.
+and $\|U\|_{\rm op}$ and $\|T\|_{\rm op}$ are bounded with probability tending to one. Its proof bounds the variance of $z^{T}Az$ by the Gaussian Poincar\'e inequality, proved by Chernoff~\cite{Chernoff} in dimension one, and passes to the $p$-th moment by hypercontractivity of the Ornstein--Uhlenbeck semigroup, due to Nelson~\cite{Nelson} (see also Hariya~\cite{Hariya}). The hypothesis that $\sigma$ is a polynomial is used only in this proposition; Sections~\ref{sec:cov} and~\ref{sec:edge} use only the expansion of $\Sigma$ in powers of the inner products of the data. Ma and Misiakiewicz~\cite{MM} prove the anisotropic local law under the quadratic form bound alone.
 
-The quadratic form bound is proved for a deterministic $U$ (Section~\ref{sec:qf}); the data enter only through $\|U\|_{\rm op}$ and through the covariance $T$ (Sections~\ref{sec:cov} and~\ref{sec:edge}), and Section~\ref{sec:proof} applies Corollary~1.4 of~\cite{CL} on an event of probability tending to one.
+Lemma~\ref{lem:edge} compares the function $f$ for $T$ and for $vI_M$, whose right edge $v(1+\sqrt{M/m})^2$ is that of the law of Marchenko and Pastur~\cite{MP}; the same lemma, with the largest eigenvalue of the covariance treated separately, covers $K$ below the threshold. If the Hermite coefficient $a_1=\EE[Z\sigma(Z)]$ of degree one is not zero, $\Sigma$ contains in addition the matrix $a_1^2U^{T}U$, whose spectrum is not concentrated near one point, and Lemma~\ref{lem:edge} does not apply.
+
+\begin{center}
+\small
+\begin{tabular}{@{}lp{0.72\textwidth}@{}}\toprule
+Section~\ref{sec:gauss} & hypercontractivity and the Gaussian Poincar\'e inequality for polynomials\\
+Section~\ref{sec:qf} & the quadratic form bound for a deterministic $U$ (Proposition~\ref{prop:qf})\\
+Section~\ref{sec:cov} & the covariance $\Sigma$ of a row given the data and the matrix $A_0$ (Lemmas~\ref{lem:cov} and~\ref{lem:T})\\
+Section~\ref{sec:edge} & the displacement of the right edge (Lemma~\ref{lem:edge})\\
+Section~\ref{sec:proof} & the proof of Theorem~\ref{thm:main} and Corollary~\ref{cor:K} on an event of probability tending to one, and the finite-$N$ edge (Remark~\ref{rem:finite})\\
+Appendix~\ref{app:notation} & notation\\
+\bottomrule
+\end{tabular}
+\end{center}
 
 \section{Two Gaussian inequalities}\label{sec:gauss}
 Let $g$ be a standard Gaussian vector in $\RR^{n}$ and $\|\cdot\|_p$ the norm of $L^p$.
@@ -111,7 +114,7 @@ Let $H$ be a real polynomial of total degree at most $l$ in the coordinates of $
 \end{lemma}
 
 \begin{proof}
-Let $(S_t)$ be the Ornstein--Uhlenbeck semigroup. Nelson's hypercontractivity~\cite{Nelson}, in the form stated in the introduction of~\cite{Hariya}, gives $\|S_tG\|_p\le\|G\|_2$ for every square-integrable function $G$ of the Gaussian vector when $e^{2t}=p-1$. Write $H=\sum_{j=0}^{l}H_j$, where $H_j$ is the component of $H$ in the $j$-th Wiener chaos, and put $G=\sum_{j=0}^{l}e^{tj}H_j$. Since $S_tH_j=e^{-tj}H_j$, we have $S_tG=H$, and by orthogonality of the chaoses $\|G\|_2^2=\sum_je^{2tj}\|H_j\|_2^2\le e^{2tl}\|H\|_2^2=(p-1)^{l}\|H\|_2^2$.
+Let $(S_t)$ be the Ornstein--Uhlenbeck semigroup. Nelson's hypercontractivity~\cite{Nelson}, in the form stated in the introduction of~\cite{Hariya}, gives $\|S_tG\|_p\le\|G\|_2$ for every square-integrable function $G$ of the Gaussian vector when $\exp(2t)=p-1$. Write $H=\sum_{j=0}^{l}H_j$, where $H_j$ is the component of $H$ in the $j$-th Wiener chaos, and put $G=\sum_{j=0}^{l}\exp(tj)H_j$. Since $S_tH_j=\exp(-tj)H_j$, we have $S_tG=H$, and by orthogonality of the chaoses $\|G\|_2^2=\sum_j\exp(2tj)\|H_j\|_2^2\le\exp(2tl)\|H\|_2^2=(p-1)^{l}\|H\|_2^2$.
 \end{proof}
 
 \begin{lemma}\label{lem:poincare}
@@ -123,7 +126,7 @@ This is the Gaussian Poincar\'e inequality~\cite{Chernoff}. For a polynomial on 
 \end{proof}
 
 \section{The quadratic form bound for Gaussian weights}\label{sec:qf}
-In this section $\sigma$ is any real polynomial of degree $k$ with $\EE\sigma(Z)=0$, and $U$, $Q$ and $M$ are more general than in the introduction. Let $U\in\RR^{d\times N}$ be deterministic with unit columns $u_1,\dots,u_N$ and $\|U\|_{\rm op}\le C_U$, and let $Q\in\RR^{N\times M}$ be deterministic with $Q^{T}Q=I_M$. For a standard Gaussian $g\in\RR^{d}$ let
+In this section $\sigma$ is any real polynomial of degree $k$ with $\EE\sigma(Z)=0$. Let $U\in\RR^{d\times N}$ be deterministic with unit columns $u_1,\dots,u_N$ and $\|U\|_{\rm op}\le C_U$, and let $Q\in\RR^{N\times M}$ be deterministic with $Q^{T}Q=I_M$. For a standard Gaussian $g\in\RR^{d}$ let
 \[
 \phi(g)=\sigma(U^{T}g)\in\RR^N,\qquad z(g)=Q^{T}\phi(g)\in\RR^{M},\qquad T=\EE\,zz^{T},
 \]
@@ -155,7 +158,7 @@ Hence $\Var F\le4C_U^2\kappa_4^2\,3^{k}C_T\|A\|_F^2$. The polynomial $F-\EE F$ h
 
 
 \section{The covariance of a row given the data}\label{sec:cov}
-Write $\rho_{jl}=u_j^{T}u_l$ for the inner products of the columns of $U$. Given $U$, the rows of $Y$ are independent copies of $\phi(g)=\sigma(U^{T}g)$ with $g$ standard Gaussian in $\RR^{d}$. For standard Gaussian variables $Z_1,Z_2$ with correlation $\rho$, $\EE h_s(Z_1)h_t(Z_2)=\delta_{st}\rho^{s}$~\cite[Section~11.2]{ODonnell}, so the conditional covariance $\Sigma=\EE[\phi\phi^{T}\mid U]$ is
+Write $\rho_{jl}=u_j^{T}u_l$ for the inner products of the columns of $U$. Given $U$, the rows of $Y$ are independent copies of $\phi(g)=\sigma(U^{T}g)$ with $g$ standard Gaussian in $\RR^{d}$. For standard Gaussian variables $Z_1,Z_2$ with correlation $\rho$, $\EE h_s(Z_1)h_t(Z_2)=\delta_{st}\rho^{s}$~\cite[Section~11.2]{ODonnell}, so the covariance $\Sigma=\EE[\phi\phi^{T}\mid U]$ of a row given the data is
 \begin{equation}\label{eq:Sigma}
 \Sigma_{jl}=\sum_{s=2}^{k}a_s^2\rho_{jl}^{s},\qquad\Sigma_{jj}=v.
 \end{equation}
@@ -167,7 +170,7 @@ Then
 \begin{equation}\label{eq:decomp}
 \Sigma=\Bigl(v-\frac qd\Bigr)I_N+\frac qd\,\mathbf 1\mathbf 1^{T}+qB+R.
 \end{equation}
-The matrix $\Sigma$ is an inner-product kernel matrix of the data, and~\eqref{eq:decomp} is the splitting into an identity part, a rank-one part, a quadratic part and parts of higher degree that El Karoui~\cite{EK10} used to identify the spectrum of such matrices; Fan and Montanari~\cite{FM} bound the operator norm of the parts of higher degree. Lemma~\ref{lem:cov} gives, with explicit constants, bounds on the trace and the Hilbert--Schmidt norm of $\Sigma-vI_N$; these govern the displacement in Lemma~\ref{lem:edge}, and a bound on the operator norm does not control them.
+The matrix $\Sigma$ is an inner-product kernel matrix of the data, and~\eqref{eq:decomp} is the splitting into an identity part, a rank-one part, a quadratic part and parts of higher degree that El Karoui~\cite{EK10} used to identify the spectrum of such matrices; Fan and Montanari~\cite{FM} bound the operator norm of the parts of higher degree. Lemma~\ref{lem:cov} bounds, with explicit constants, the Hilbert--Schmidt norm of $\Sigma-vI_N$, and Lemma~\ref{lem:T} turns this into bounds on $\Tr A_0$ and $\|A_0\|_F$, which govern the displacement in Lemma~\ref{lem:edge}; a bound on the operator norm does not control them.
 For two independent uniform unit vectors in $\RR^{d}$, writing a standard Gaussian vector as its length times an independent uniform direction gives
 \begin{equation}\label{eq:sphmom}
 \EE\rho^{2s}=\frac{1\cdot3\cdots(2s-1)}{d(d+2)\cdots(d+2s-2)}.
@@ -190,15 +193,15 @@ For~\eqref{eq:B4}, let $\mathcal S$ be the space of traceless symmetric $d\times
 \[
 \EE u_au_bu_cu_f=\frac{\delta_{ab}\delta_{cf}+\delta_{ac}\delta_{bf}+\delta_{af}\delta_{bc}}{d(d+2)},
 \]
-the constant being fixed by $\EE(\sum_au_a^2)^2=1$, so $\EE\langle\zeta(u),A\rangle^2=\EE(u^{T}Au)^2=2\Tr(A^2)/(d(d+2))$ for $A\in\mathcal S$: $\zeta(u)$ has mean zero and covariance $\tau I$ on $\mathcal S$, with $\tau=2/(d(d+2))$. In the expansion of $\Tr B^4$ over closed walks $j_1j_2j_3j_4$ with consecutive indices distinct, a walk on two vertices contributes $\EE B_{12}^4=\mu_4:=\EE(\rho^2-1/d)^4$, and there are $(N)_2$ of them. A walk on three vertices repeats one vertex; conditioning on that vertex gives $\EE B_{12}^2B_{13}^2=(c\tau)^2$, and there are $2(N)_3$ of them. A walk on four vertices contributes $\EE B_{12}B_{23}B_{34}B_{41}=\tau^2\EE B_{13}^2=c\tau^3$, integrating $u_2$ and $u_4$ first, and there are $(N)_4$ of them, where $(N)_i=N(N-1)\cdots(N-i+1)$. Thus
+the constant being fixed by $\EE(\sum_au_a^2)^2=1$, so $\EE\langle\zeta(u),A\rangle^2=\EE(u^{T}Au)^2=2\Tr(A^2)/(d(d+2))$ for $A\in\mathcal S$: $\zeta(u)$ has mean zero and covariance $\theta I$ on $\mathcal S$, with $\theta=2/(d(d+2))$. In the expansion of $\Tr B^4$ over closed walks $j_1j_2j_3j_4$ with consecutive indices distinct, a walk on two vertices contributes $\EE B_{12}^4=\mu_4:=\EE(\rho^2-1/d)^4$, and there are $(N)_2$ of them. A walk on three vertices repeats one vertex; conditioning on that vertex gives $\EE B_{12}^2B_{13}^2=(c\theta)^2$, and there are $2(N)_3$ of them. A walk on four vertices contributes $\EE B_{12}B_{23}B_{34}B_{41}=\theta^2\EE B_{13}^2=c\theta^3$, integrating $u_2$ and $u_4$ first, and there are $(N)_4$ of them, where $(N)_i=N(N-1)\cdots(N-i+1)$. Thus
 \[
-\EE\Tr B^4=(N)_2\mu_4+2(N)_3(c\tau)^2+(N)_4c\tau^3.
+\EE\Tr B^4=(N)_2\mu_4+2(N)_3(c\theta)^2+(N)_4c\theta^3.
 \]
 Expanding $\mu_4$ with~\eqref{eq:sphmom},
 \[
 \mu_4=\frac{12(d-1)(5d^2-13d+12)}{d^4(d+2)(d+4)(d+6)}\le\frac{60}{d^4}\qquad(d\ge2),
 \]
-because $(d-1)(5d^2-13d+12)=5d^3-18d^2+25d-12\le5d^3$ for $d\ge2$. With $c\le1$ and $\tau\le2/d^2$ this gives~\eqref{eq:B4}, and $\|B\|_{\rm op}^4\le\Tr B^4$.
+because $(d-1)(5d^2-13d+12)=5d^3-18d^2+25d-12\le5d^3$ for $d\ge2$. With $c\le1$ and $\theta\le2/d^2$ this gives~\eqref{eq:B4}, and $\|B\|_{\rm op}^4\le\Tr B^4$.
 \end{proof}
 
 \begin{lemma}\label{lem:T}
@@ -218,11 +221,11 @@ Formula~\eqref{eq:T} is~\eqref{eq:decomp} with $Q^{T}\mathbf 1=0$. Since $\Tr D=
 \end{proof}
 
 \section{Displacement of the right edge}\label{sec:edge}
-For a sample covariance matrix $m^{-1}\sum_{i\le m}z_iz_i^{T}$ with covariance $T$ of dimension $M$ and eigenvalues $t_{\max}=t_1\ge\dots\ge t_M>0$, the right edge of the limiting spectrum and its scaling parameter are given by the edge function
+Recall from Section~\ref{sec:intro} the edge function $f$ of a covariance $T$ of dimension $M$ with eigenvalues $t_1\ge\dots\ge t_M>0$, the zero $u_+$ of $f'$, the right edge $E_T=f(u_+)$, the scaling parameter $\gamma_T=(2/f''(u_+))^{1/3}$ and the constant $\tau$ of a regular right edge. Here
 \[
 f(u)=-\frac1u+\frac1m\sum_{j=1}^{M}\frac{t_j}{1+t_ju}
 \]
-on $(-1/t_{\max},0)$~\cite{SC,ElKaroui,LS}; this is the function of~\cite[(1.5)]{CL}, with $u$ in place of their $m$. There $f''(u)=-2/u^3+(2/m)\sum_jt_j^3/(1+t_ju)^3>0$, while $f'(u)\to-\infty$ as $u\downarrow-1/t_{\max}$ and $f'(u)\to+\infty$ as $u\uparrow0$, so $f'$ has a unique zero $u_+$. Put $E_T=f(u_+)$ and $\gamma_T=(2/f''(u_+))^{1/3}$. Following~\cite[Assumption~1.2]{CL}, the right edge is called regular when there is a constant $\tau>0$, independent of $M$ and $m$, with $\tau\le t_M\le t_1\le\tau^{-1}$ and $1+t_{\max}u_+\ge\tau$. For $T=vI_M$ and $r=M/m$, $f$ becomes $f_0(u)=-1/u+rv/(1+vu)$, and
+on $(-1/t_1,0)$~\cite{SC,ElKaroui,LS}; this is the function of~\cite[(1.5)]{CL}, with $u$ in place of their $m$. There $f''(u)=-2/u^3+(2/m)\sum_jt_j^3/(1+t_ju)^3>0$, while $f'(u)\to-\infty$ as $u\downarrow-1/t_1$ and $f'(u)\to+\infty$ as $u\uparrow0$, so the zero $u_+$ of $f'$ is unique. Regularity is~\cite[Assumption~1.2]{CL}, with $\tau$ independent of $M$ and $m$. For $T=vI_M$ and $r=M/m$, $f$ becomes $f_0(u)=-1/u+rv/(1+vu)$, and
 \[
 u_0=-\frac1{v(1+\sqrt r)},\qquad E_0=v(1+\sqrt r)^2,\qquad\gamma_0=\frac{r^{1/6}}{v(1+\sqrt r)^{4/3}},\qquad f_0''(u_0)=\frac{2v^3(1+\sqrt r)^4}{\sqrt r},
 \]
@@ -233,32 +236,32 @@ Let $r=M/m$ lie in a fixed compact subset of $(0,\infty)$.
 \begin{enumerate}
 \item[(i)] Put $\epsilon=\max_j|t_j-v|$, $\mu=M^{-1}\sum_j(t_j-v)$ and $s_2=M^{-1}\sum_j(t_j-v)^2$. There are $\epsilon_0,C,c_0>0$, depending only on $v$ and the compact set, such that $\epsilon\le\epsilon_0$ implies
 \begin{equation}\label{eq:edge}
-|u_+-u_0|+|E_T-E_0|+|\gamma_T-\gamma_0|\le C(|\mu|+s_2),\qquad1+t_{\max}u_+\ge c_0.
+|u_+-u_0|+|E_T-E_0|+|\gamma_T-\gamma_0|\le C(|\mu|+s_2),\qquad1+t_1u_+\ge c_0.
 \end{equation}
 \item[(ii)] Let $\eta\in(0,1)$, suppose $t_1\le(1-\eta)v(1+\sqrt r)$, and define $\epsilon$, $\mu$ and $s_2$ as in (i) with the sums and the maximum over $j\ge2$ only. There are $\epsilon_0,C,c_0>0$ and $m_0$, depending only on $v$, $\eta$ and the compact set, such that $\epsilon\le\epsilon_0$ and $m\ge m_0$ imply~\eqref{eq:edge} with $C(|\mu|+s_2)$ replaced by $C(|\mu|+s_2+m^{-1})$.
 \end{enumerate}
 \end{lemma}
 
 \begin{proof}
-(i) Choose a closed interval $J$ around $u_0$, uniformly over the compact range of $r$, such that $u<0$ on $J$, $1+vu\ge2c_0$ on $J$, $f_0''$ is bounded below on $J$ by a positive constant, and $f_0'$ takes opposite signs at the endpoints of $J$. For $\epsilon$ small, $1+tu\ge c_0$ on $J$ whenever $|t-v|\le\epsilon$, so $J\subset(-1/t_{\max},0)$. With $\delta=t-v$,
+(i) Choose a closed interval $J$ around $u_0$, uniformly over the compact range of $r$, such that $u<0$ on $J$, $1+vu\ge2c_0$ on $J$, $f_0''$ is bounded below on $J$ by a positive constant, and $f_0'$ takes opposite signs at the endpoints of $J$. For $\epsilon$ small, $1+tu\ge c_0$ on $J$ whenever $|t-v|\le\epsilon$, so $J\subset(-1/t_1,0)$. With $\delta=t-v$,
 \[
 \frac{t}{1+tu}-\frac{v}{1+vu}=\frac{\delta}{(1+vu)^2}-\frac{u\,\delta^2}{(1+vu)^2(1+tu)},
 \]
-and the last term and its first two derivatives in $u$ are bounded on $J$ by $C\delta^2$. Averaging over $j$ gives $\sup_J|f^{(l)}-f_0^{(l)}|\le C(|\mu|+s_2)$ for $l=0,1,2$. Since $|\mu|\le\epsilon$ and $s_2\le\epsilon^2$, after decreasing $\epsilon_0$ this is small enough that $f'$ takes opposite signs at the endpoints of $J$ and $f''$ is bounded below on $J$. Then $f'$ has a zero in $J$, which is $u_+$ by uniqueness, and the mean value theorem gives $|u_+-u_0|\le C(|\mu|+s_2)$. Writing $E_T-E_0=(f-f_0)(u_+)+f_0(u_+)-f_0(u_0)$ and $f''(u_+)-f_0''(u_0)=(f''-f_0'')(u_+)+f_0''(u_+)-f_0''(u_0)$, and using that $f_0'$ and $f_0'''$ are bounded on $J$, gives the bounds on $E_T-E_0$ and on $f''(u_+)-f_0''(u_0)$, and with them the bound on $\gamma_T-\gamma_0$, as $x\mapsto(2/x)^{1/3}$ is smooth near $f_0''(u_0)$. Finally $1+t_{\max}u_+\ge c_0$ because $u_+\in J$.
+and the last term and its first two derivatives in $u$ are bounded on $J$ by $C\delta^2$. Averaging over $j$ gives $\sup_J|f^{(l)}-f_0^{(l)}|\le C(|\mu|+s_2)$ for $l=0,1,2$. Since $|\mu|\le\epsilon$ and $s_2\le\epsilon^2$, after decreasing $\epsilon_0$ this is small enough that $f'$ takes opposite signs at the endpoints of $J$ and $f''$ is bounded below on $J$. Then $f'$ has a zero in $J$, which is $u_+$ by uniqueness, and the mean value theorem gives $|u_+-u_0|\le C(|\mu|+s_2)$. Writing $E_T-E_0=(f-f_0)(u_+)+f_0(u_+)-f_0(u_0)$ and $f''(u_+)-f_0''(u_0)=(f''-f_0'')(u_+)+f_0''(u_+)-f_0''(u_0)$, and using that $f_0'$ and $f_0'''$ are bounded on $J$, gives the bounds on $E_T-E_0$ and on $f''(u_+)-f_0''(u_0)$, and with them the bound on $\gamma_T-\gamma_0$, as $x\mapsto(2/x)^{1/3}$ is smooth near $f_0''(u_0)$. Finally $1+t_1u_+\ge c_0$ because $u_+\in J$.
 
-(ii) Since $1+t_1u_0=1-t_1/(v(1+\sqrt r))\ge\eta$, the interval $J$ of (i) can be shrunk, uniformly in $r$, so that in addition $1+(1-\eta)v(1+\sqrt r)u\ge\eta/2$ on $J$; as $u<0$, then $1+t_1u\ge\eta/2$ on $J$, and $J\subset(-1/t_{\max},0)$ again. The term $m^{-1}t_1/(1+t_1u)$ of $f$, and the term $m^{-1}v/(1+vu)$ of $f_0$ it replaces, are bounded on $J$ with their first three derivatives by $C/m$. The argument of (i) applied to the indices $j\ge2$ then gives $\sup_J|f^{(l)}-f_0^{(l)}|\le C(|\mu|+s_2+m^{-1})$ for $l=0,1,2$, and the rest of the proof is unchanged, with $m\ge m_0$ ensuring the required smallness.
+(ii) Since $1+t_1u_0=1-t_1/(v(1+\sqrt r))\ge\eta$, the interval $J$ of (i) can be shrunk, uniformly in $r$, so that in addition $1+(1-\eta)v(1+\sqrt r)u\ge\eta/2$ on $J$; as $u<0$, then $1+t_1u\ge\eta/2$ on $J$, and $J\subset(-1/t_1,0)$ again. The term $m^{-1}t_1/(1+t_1u)$ of $f$, and the term $m^{-1}v/(1+vu)$ of $f_0$ it replaces, are bounded on $J$ with their first three derivatives by $C/m$. The argument of (i) applied to the indices $j\ge2$ then gives $\sup_J|f^{(l)}-f_0^{(l)}|\le C(|\mu|+s_2+m^{-1})$ for $l=0,1,2$, and the rest of the proof is unchanged, with $m\ge m_0$ ensuring the required smallness.
 \end{proof}
 
 \section{Proof of Theorem~\ref{thm:main}}\label{sec:proof}
-\emph{A good event for the data.} Write $u_j=g_j/\|g_j\|$ with independent standard Gaussian $g_j\in\RR^{d}$; then $x_j=\sqrt d\,u_j$ has the required law. By Markov's inequality applied to $e^{-\|g_j\|^2/2}$, $\PP(\|g_j\|^2<d/2)\le e^{-d((\log2)/2-1/4)}$, so $\min_j\|g_j\|^2\ge d/2$ with probability tending to one. For $G=(g_1,\dots,g_N)$, take $1/4$-nets of the unit spheres of $\RR^{d}$ and $\RR^{N}$, of sizes at most $9^{d}$ and $9^{N}$~\cite[Corollary~4.2.13]{Vershynin}. For fixed net points $x,y$, $x^{T}Gy$ is standard Gaussian, so the maximum of $|x^{T}Gy|$ over the nets is at most $4\sqrt{d+N}$ except with probability $2e^{-(8-\log9)(d+N)}$, and then $\|G\|_{\rm op}\le8\sqrt{d+N}$. Hence $\|U\|_{\rm op}\le\|G\|_{\rm op}/\min_j\|g_j\|\le C_U$ with probability tending to one, for a constant $C_U$ depending only on $\alpha$. Let
+\emph{A good event for the data.} Write $u_j=g_j/\|g_j\|$ with independent standard Gaussian $g_j\in\RR^{d}$; then $x_j=\sqrt d\,u_j$ has the required law. By Markov's inequality applied to $\exp(-\|g_j\|^2/2)$, $\PP(\|g_j\|^2<d/2)\le\exp(-d((\log2)/2-1/4))$, so $\min_j\|g_j\|^2\ge d/2$ with probability tending to one. For $G=(g_1,\dots,g_N)$, take $1/4$-nets of the unit spheres of $\RR^{d}$ and $\RR^{N}$, of sizes at most $9^{d}$ and $9^{N}$~\cite[Corollary~4.2.13]{Vershynin}. For fixed net points $x,y$, $x^{T}Gy$ is standard Gaussian, so the maximum of $|x^{T}Gy|$ over the nets is at most $4\sqrt{d+N}$ except with probability $2\exp(-(8-\log9)(d+N))$, and then $\|G\|_{\rm op}\le8\sqrt{d+N}$. Hence $\|U\|_{\rm op}\le\|G\|_{\rm op}/\min_j\|g_j\|\le C_U$ with probability tending to one, for a constant $C_U$ depending only on $\alpha$. Let
 \[
 \mathcal G_N=\Bigl\{\|U\|_{\rm op}\le C_U,\ \|B\|_{\rm op}\le N^{-1/8},\ \|R\|_F\le N^{-1/8},\ \Tr D^2\le N^{1/6}\Bigr\}.
 \]
 By Lemma~\ref{lem:cov} and Markov's inequality, the last three conditions fail with probabilities $O(N^{-1/2})$, $O(N^{-3/4})$ and $O(N^{-1/6})$, so $\PP(\mathcal G_N)\to1$.
 
-\emph{The covariance on the good event.} On $\mathcal G_N$, \eqref{eq:decomp} gives $\|D\|_{\rm op}\le C$, and \eqref{eq:T} gives $\|T-vI_M\|_{\rm op}\le q/d+qN^{-1/8}+N^{-1/8}\to0$, uniformly. By~\eqref{eq:A0}, in the notation of Lemma~\ref{lem:edge}, $|\mu|\le\|D\|_{\rm op}/M\le C/M$ and $s_2\le\Tr D^2/M\le N^{1/6}/M$. Lemma~\ref{lem:edge}, with $r=M/m$, gives uniformly on $\mathcal G_N$
+\emph{The covariance on the good event.} On $\mathcal G_N$, \eqref{eq:decomp} and $N/d\to\alpha$ give $\|D\|_{\rm op}\le C$, and \eqref{eq:T} gives $\|T-vI_M\|_{\rm op}\le q/d+qN^{-1/8}+N^{-1/8}\to0$, uniformly. By~\eqref{eq:A0}, in the notation of Lemma~\ref{lem:edge}, $|\mu|\le\|D\|_{\rm op}/M\le C/M$ and $s_2\le\Tr D^2/M\le N^{1/6}/M$. Lemma~\ref{lem:edge}, with $r=M/m$, gives uniformly on $\mathcal G_N$
 \begin{equation}\label{eq:shift}
-m^{2/3}|E_T-E_0|\le CN^{-1/6}\to0,\qquad\gamma_T-\gamma_0\to0,\qquad1+t_{\max}u_+\ge c_0.
+m^{2/3}|E_T-E_0|\le CN^{-1/6}\to0,\qquad\gamma_T-\gamma_0\to0,\qquad1+t_1u_+\ge c_0.
 \end{equation}
 In particular $T$ is bounded above and below by positive constants uniformly on $\mathcal G_N$, and Proposition~\ref{prop:qf} gives, for each fixed $p$, the quadratic form bound with a constant independent of $N$ and of $U\in\mathcal G_N$.
 
@@ -292,16 +295,16 @@ Given $W$, the columns of $Y$ are independent and identically distributed in $\R
 \section*{Acknowledgements and funding}
 This work was done by multiple AI agents, Claude (Anthropic) and Codex (OpenAI), connected to Math Brain~\cite{MathBrainRepo} and working together inside the Brain framework~\cite{BrainFramework}, a shared, persistent memory in which the agents record claims, proofs, failed attempts and methods, retrieve one another's results, coordinate who works on what, and audit each other's work. For more on the details behind the Brain and Math Brain, see the Math Brain paper~\cite{MathBrainPaper}, the Math Brain repository~\cite{MathBrainRepo} and the Brain framework repository~\cite{BrainFramework}.
 
-The research presented here was supported by the European Research Council (ERC) under the European Union's Horizon Europe research and innovation program (grant agreement No.~101041711) and by the Simons Foundation as part of the Collaboration on the Mathematical and Scientific Foundations of Deep Learning. It was also supported by Heights Labs, by Convex Nexus Capital, by the Israel Science Foundation (grant number 2258/19), and by the Israel Science Foundation (ISF Grant 4101/25). Computational resources were provided in part by Google Cloud through its education credits program (credit 530550103).
+The research presented here was supported by the European Research Council (ERC) under the European Union's Horizon Europe research and innovation program (grant agreement No.~101041711) and by the Simons Foundation as part of the Collaboration on the Mathematical and Scientific Foundations of Deep Learning. It was also supported by Heights Labs, by Convex Nexus Capital and by the Israel Science Foundation (grants 2258/19 and 4101/25). Computational resources were provided in part by Google Cloud through its education credits program (credit 530550103).
 
 \section*{Declaration of competing interest}
 The author holds equity in Heights Labs and in Convex Nexus Capital and has a management role at Convex Nexus Capital. These entities are included in the funding declaration above.
 
 \section*{Declaration of generative AI and AI-assisted technologies}
-Codex (OpenAI, GPT-6.1) developed the proofs and wrote the first verification script; Claude Opus~5.5 (Anthropic) checked the proofs and the use of the universality theorem, wrote the second script and wrote the paper. The results rest on the edge universality theorem of Chen and Lyu~\cite{CL}, the quadratic form bound of Fan, Ma, Paquette and Wang~\cite{FMPW}, proved here for Gaussian weights in Proposition~\ref{prop:qf}, and the edge function of Silverstein and Choi~\cite{SC}; the covariance after the row means are removed and the displacement of the right edge (Lemmas~\ref{lem:cov}, \ref{lem:T} and~\ref{lem:edge}) are new. The author directed the work and is responsible for the content of the paper and for decisions concerning its dissemination.
+Codex (OpenAI, GPT-6.1) developed the proofs and wrote the first verification script; Claude Opus~5.5 (Anthropic) checked the proofs, wrote the second and third scripts and wrote the paper. The two systems worked through the shared memory of Math Brain~\cite{MathBrainPaper,MathBrainRepo} and the Brain framework~\cite{BrainFramework}. The results rest on the edge universality theorem of Chen and Lyu~\cite{CL}, the quadratic form bound of Fan, Ma, Paquette and Wang~\cite{FMPW} and the edge function of Silverstein and Choi~\cite{SC}; the covariance after the row means are removed and the displacement of the right edge (Lemmas~\ref{lem:cov}, \ref{lem:T} and~\ref{lem:edge}) are new. The author directed the work and is responsible for the content of the paper and for decisions concerning its dissemination.
 
 \section*{Data availability}
-The \LaTeX{} source of the paper and three Python scripts are available at \url{https://github.com/yspennstate/row-centered-conjugate-kernel-tracy-widom/tree/v1.5}. The first evaluates, in exact rational arithmetic, both sides of each inequality in the proof of Proposition~\ref{prop:qf} for $\sigma$ of degree two to five and several matrices $U$. The second evaluates~\eqref{eq:sphmom}, the closed form and the bound for $\mu_4$ in Lemma~\ref{lem:cov}, the constants of Section~\ref{sec:edge} and the change of normalization in Section~\ref{sec:proof}. The third computes the edges $E_W$ quoted in Remark~\ref{rem:finite}.
+The \LaTeX{} source of the paper and three Python scripts are available at \url{https://github.com/yspennstate/row-centered-conjugate-kernel-tracy-widom/tree/v1.6}. The first evaluates, in exact rational arithmetic, both sides of each inequality in the proof of Proposition~\ref{prop:qf} for $\sigma$ of degree two to five and several matrices $U$. The second evaluates~\eqref{eq:sphmom}, the closed form and the bound for $\mu_4$ in Lemma~\ref{lem:cov}, the constants of Section~\ref{sec:edge} and the change of normalization in Section~\ref{sec:proof}. The third computes the edges $E_W$ quoted in Remark~\ref{rem:finite}.
 
 \appendix
 \input{notation}
@@ -335,7 +338,7 @@ The \LaTeX{} source of the paper and three Python scripts are available at \url{
 \bibitem{Vershynin} R.~Vershynin, \emph{High-dimensional probability}, Cambridge University Press, Cambridge, 2018.
 \bibitem{WWF} Z.~Wang, D.~Wu and Z.~Fan, \emph{Nonlinear spiked covariance matrices and signal propagation in deep neural networks}, Proceedings of Machine Learning Research 247 (2024), arXiv:2402.10127.
 \bibitem{MathBrainRepo} Y.~Shmalo, \emph{Math Brain: public snapshot, code and tests}, 2026, \url{https://github.com/yspennstate/math-brain-public/tree/8c9a6bd478c4ec4082347151b7ae16db50c917dd}.
-\bibitem{MathBrainPaper} Y.~Shmalo, \emph{Math Brain: shared, auditable memory for multi-agent mathematical research}, October 2026, \url{https://github.com/yspennstate/math-brain-public/tree/main/papers/math-brain-2026-10-24}, doi:10.5281/zenodo.24150837.
+\bibitem{MathBrainPaper} Y.~Shmalo, \emph{Math Brain: shared, auditable memory for multi-agent mathematical research}, October 2026, doi:10.5281/zenodo.24150837, \url{https://github.com/yspennstate/math-brain-public/tree/8c9a6bd478c4ec4082347151b7ae16db50c917dd/papers/math-brain-2026-10-24}.
 \bibitem{BrainFramework} Y.~Shmalo, \emph{Brain Framework}, public software repository, 2026, \url{https://github.com/yspennstate/brain-framework-public/tree/5629e644cdd510173ae97e9aa92642dabd22dc57}.
 \end{thebibliography}
 \end{document}
