@@ -1,0 +1,52 @@
+\section{Notation}\label{app:notation}
+Symbols are listed in the order in which they first appear. Standard symbols ($\RR$, $\EE$, $\PP$, $\Tr$, $\Var$) are omitted, and so are generic constants $C$, $c$ and letters defined and used inside a single proof.
+
+\begin{center}\small\begin{tabular}{@{}lp{0.6\textwidth}l@{}}\toprule
+Symbol & Meaning & First appears \\ \midrule
+$m,d,N$ & number of hidden units, input dimension, number of data points & Section~\ref{sec:intro} \\
+$W$ & $m\times d$ weight matrix with independent standard Gaussian entries & Section~\ref{sec:intro} \\
+$X$, $x_j$ & $d\times N$ data matrix and its columns, uniform on the sphere of radius $\sqrt d$ & Section~\ref{sec:intro} \\
+$\sigma$, $k$ & activation, a polynomial of degree $k\ge2$ & Section~\ref{sec:intro} \\
+$Y$ & the feature matrix $\sigma(WX/\sqrt d)$ & Section~\ref{sec:intro} \\
+$K$ & conjugate kernel $YY^{T}/N$ & Section~\ref{sec:intro} \\
+$Z$ & a standard Gaussian variable & Section~\ref{sec:intro} \\
+$\alpha$ & limit of $N/d$ & Section~\ref{sec:intro} \\
+$b_N$, $b$ & the ratio $m/N$ and its limit & Section~\ref{sec:intro} \\
+$\mathbf 1$, $e$ & vector of ones in $\RR^N$, and $e=N^{-1/2}\mathbf 1$ & Section~\ref{sec:intro} \\
+$P$ & projection $I_N-\mathbf 1\mathbf 1^{T}/N$ removing the row means & Section~\ref{sec:intro} \\
+$K_P$ & row-centered conjugate kernel $YPY^{T}/N$ & Section~\ref{sec:intro} \\
+$v$ & $\EE\sigma(Z)^2$ & Section~\ref{sec:intro} \\
+$\TW$ & Tracy--Widom law of the Gaussian orthogonal ensemble & Section~\ref{sec:intro} \\
+$\lambda_{\max}$, $\lambda_2$ & largest and second largest eigenvalue & Section~\ref{sec:intro} \\
+$h_j$, $a_j$ & normalized Hermite polynomials $\mathrm{He}_j/\sqrt{j!}$ and the coefficients of $\sigma$ on them & Section~\ref{sec:intro} \\
+$q$ & $a_2^2$ & Section~\ref{sec:intro} \\
+$g$ & standard Gaussian vector in $\RR^d$ & Section~\ref{sec:intro} \\
+$U$, $u_j$ & the matrix with unit columns $u_j=x_j/\sqrt d$ & Section~\ref{sec:intro} \\
+$z_i$, $\xi_i$ & sample vectors of a sample covariance matrix, and $T^{-1/2}z_i$ & Section~\ref{sec:intro} \\
+$M$ & dimension of the sample vectors, equal to $N-1$ in the proofs & Section~\ref{sec:intro} \\
+$T$ & covariance of the sample vectors & Section~\ref{sec:intro} \\
+$E_T$, $\gamma_T$ & right edge determined by $T$ and $M/m$, and its scaling parameter & Section~\ref{sec:intro} \\
+$t_1\ge\dots\ge t_M$ & eigenvalues of $T$; $t_{\max}=t_1$ & Section~\ref{sec:intro} \\
+$u_+$ & the zero of $f'$ defining $E_T$ & Section~\ref{sec:intro} \\
+$\tau$ & constant in the regularity condition of the right edge & Section~\ref{sec:intro} \\
+$w$ & weight vector of the random features model $\sigma(Xw)$ of Fan, Ma, Paquette and Wang & Section~\ref{sec:intro} \\
+$\|\cdot\|_p$ & norm of $L^p$, $(\EE|V|^p)^{1/p}$ & Section~\ref{sec:intro} \\
+$\|\cdot\|_F$, $\|\cdot\|_{\rm op}$ & Hilbert--Schmidt norm and operator norm & Section~\ref{sec:intro} \\
+$\Sigma$ & covariance of a row of $Y$ given the data & Section~\ref{sec:intro} \\
+$B$, $R$ & zero-diagonal matrices with $B_{jl}=\rho_{jl}^2-1/d$ and $R_{jl}$ the terms of $\Sigma_{jl}$ of degree at least three in $\rho_{jl}$ & Section~\ref{sec:intro} \\
+$Q$ & $N\times M$ matrix with orthonormal columns and $QQ^{T}=P$ & Section~\ref{sec:intro} \\
+$A_0$ & $T-vI_M$ & Section~\ref{sec:intro} \\
+$O_P$, $o_P$ & bounded in probability, and tending to zero in probability & Section~\ref{sec:intro} \\
+$\bar y$ & vector of row means $Y\mathbf 1/N$ & Remark~\ref{rem:scope} \\
+$\phi$ & $\sigma(U^{T}g)$, a row of $Y$ given the data & Section~\ref{sec:qf} \\
+$C_U$, $C_T$ & bounds on $\|U\|_{\rm op}$ and $\|T\|_{\rm op}$ & Section~\ref{sec:qf} \\
+$D_4$ & $(\EE|\sigma'(Z)|^4)^{1/4}$ & Section~\ref{sec:qf} \\
+$\rho_{jl}$ & $u_j^{T}u_l$ & Section~\ref{sec:cov} \\
+$D$ & $\Sigma-vI_N$ & Section~\ref{sec:cov} \\
+$f$ & edge function of Silverstein and Choi & Section~\ref{sec:edge} \\
+$r$ & $M/m$ & Section~\ref{sec:edge} \\
+$u_0$, $E_0$, $\gamma_0$ & $u_+$, $E_T$, $\gamma_T$ for $T=vI_M$ & Section~\ref{sec:edge} \\
+$\mu$, $s_2$ & mean and mean square of $t_j-v$ & Section~\ref{sec:edge} \\
+$\mathcal G_N$ & event of probability tending to one on which the data are good & Section~\ref{sec:proof} \\
+$H_P$ & $m^{-1}\sum_iz_iz_i^{T}$ for $z_i=Q^{T}\phi_i$ & Section~\ref{sec:proof} \\ \bottomrule
+\end{tabular}\end{center}
