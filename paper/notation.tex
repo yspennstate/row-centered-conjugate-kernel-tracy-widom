@@ -1,5 +1,5 @@
 \section{Notation}\label{app:notation}
-Symbols are listed in the order in which they first appear. Standard symbols ($\RR$, $\EE$, $\PP$, $\Tr$, $\Var$) are omitted, and so are generic constants $C$, $c$ and letters defined and used inside a single proof.
+Symbols are listed by the section in which they first appear. Standard symbols ($\RR$, $\EE$, $\PP$, $\Tr$, $\Var$) and generic constants $C$, $c$ are omitted.
 
 {\small
 \begin{longtable}{@{}p{0.17\textwidth}p{0.55\textwidth}l@{}}\toprule
@@ -10,6 +10,7 @@ $W$ & $m\times d$ weight matrix with independent standard Gaussian entries & Sec
 $X$, $x_j$ & $d\times N$ data matrix and its columns, uniform on the sphere of radius $\sqrt d$ & Section~\ref{sec:intro} \\
 $\sigma$, $k$ & activation, a polynomial of degree $k\ge2$ & Section~\ref{sec:intro} \\
 $Y$ & the feature matrix $\sigma(WX/\sqrt d)$ & Section~\ref{sec:intro} \\
+$w_i$ & the $i$-th row of $W$, transposed & Section~\ref{sec:intro} \\
 $K$ & conjugate kernel $YY^{T}/N$ & Section~\ref{sec:intro} \\
 $Z$ & a standard Gaussian variable & Section~\ref{sec:intro} \\
 $\alpha$ & limit of $N/d$ & Section~\ref{sec:intro} \\
@@ -20,6 +21,7 @@ $K_P$ & row-centered conjugate kernel $YPY^{T}/N$ & Section~\ref{sec:intro} \\
 $v$ & $\EE\sigma(Z)^2$ & Section~\ref{sec:intro} \\
 $\TW$ & Tracy--Widom law of the Gaussian orthogonal ensemble & Section~\ref{sec:intro} \\
 $\lambda_{\max}$, $\lambda_2$ & largest and second largest eigenvalue & Section~\ref{sec:intro} \\
+$\Longrightarrow$ & convergence in distribution & Section~\ref{sec:intro} \\
 $h_j$, $a_j$ & normalized Hermite polynomials $\mathrm{He}_j/\sqrt{j!}$ and the coefficients of $\sigma$ on them & Section~\ref{sec:intro} \\
 $q$ & $a_2^2$ & Section~\ref{sec:intro} \\
 $g$ & standard Gaussian vector in $\RR^d$ & Section~\ref{sec:intro} \\
@@ -28,7 +30,7 @@ $z_i$, $\xi_i$ & sample vectors of a sample covariance matrix, and $T^{-1/2}z_i$
 $M$ & dimension of the sample vectors; $M=N-1$ in the proof of Theorem~\ref{thm:main} and $M=N$ in that of Corollary~\ref{cor:K} & Section~\ref{sec:intro} \\
 $T$ & covariance of the sample vectors & Section~\ref{sec:intro} \\
 $E_T$, $\gamma_T$ & right edge determined by $T$ and $M/m$, and its scaling parameter & Section~\ref{sec:intro} \\
-$t_{\max}$, $t_1\ge\dots\ge t_M$ & largest eigenvalue of $T$, and all its eigenvalues & Section~\ref{sec:intro} \\
+$t_{\max}$ & largest eigenvalue of $T$ & Section~\ref{sec:intro} \\
 $u_+$ & the zero of $f'$ defining $E_T$ & Section~\ref{sec:intro} \\
 $\tau$ & constant in the regularity condition of the right edge & Section~\ref{sec:intro} \\
 $\Theta$, $w$ & deterministic matrix and weight vector of the random features model $\sigma(\Theta w)$ of Fan, Ma, Paquette and Wang & Section~\ref{sec:intro} \\
@@ -45,13 +47,17 @@ $C_U$, $C_T$ & bounds on $\|U\|_{\rm op}$ and $\|T\|_{\rm op}$ & Section~\ref{se
 $\kappa_4$ & $(\EE|\sigma'(Z)|^4)^{1/4}$ & Section~\ref{sec:qf} \\
 $\rho_{jl}$ & $u_j^{T}u_l$ & Section~\ref{sec:cov} \\
 $D$ & $\Sigma-vI_N$ & Section~\ref{sec:cov} \\
+$t_1\ge\dots\ge t_M$ & the eigenvalues of $T$ & Section~\ref{sec:edge} \\
 $f$ & edge function of Silverstein and Choi & Section~\ref{sec:edge} \\
+$f_0$ & $f$ for $T=vI_M$ & Section~\ref{sec:edge} \\
 $\eta$ & margin of the largest eigenvalue below the threshold in Lemma~\ref{lem:edge}(ii) & Section~\ref{sec:edge} \\
 $r$ & $M/m$ & Section~\ref{sec:edge} \\
 $u_0$, $E_0$, $\gamma_0$ & $u_+$, $E_T$, $\gamma_T$ for $T=vI_M$ & Section~\ref{sec:edge} \\
 $\mu$, $s_2$ & mean and mean square of $t_j-v$ & Section~\ref{sec:edge} \\
-$\mathcal G_N$ & event of probability tending to one on which the data are good & Section~\ref{sec:proof} \\
-$S_t$, $\nu$, $\mathcal S$, $\zeta$, $J$ & local to one proof & Section~\ref{sec:gauss} \\
+$\mathcal G_N$ & the event defined in Section~\ref{sec:proof} & Section~\ref{sec:proof} \\
+$S_t$, $\nu$ & the Ornstein--Uhlenbeck semigroup, and a multi-index of the product Hermite basis, in the proofs of Section~\ref{sec:gauss} & Section~\ref{sec:gauss} \\
+$\mathcal S$, $\zeta$ & local to the proof of Lemma~\ref{lem:cov} & Section~\ref{sec:cov} \\
+$J$ & local to the proof of Lemma~\ref{lem:edge} & Section~\ref{sec:edge} \\
 $H_P$ & $m^{-1}\sum_iz_iz_i^{T}$ for $z_i=Q^{T}\phi_i$ & Section~\ref{sec:proof} \\
 $c_N$ & the ratio $M/N$ & Section~\ref{sec:proof} \\
 $\Sigma_W$ & covariance of a column of $Y$ given $W$ & Remark~\ref{rem:finite} \\
